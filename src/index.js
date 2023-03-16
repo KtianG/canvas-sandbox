@@ -18,8 +18,6 @@ const handleMouseMove = e => {
   mouse.x = e.x;
   mouse.y = e.y;
 
-  ctx.fillStyle = 'rgba(36, 36, 36,0.03)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
   branchOut(mouse.x, mouse.y, color);
 };
 
@@ -30,9 +28,17 @@ const handleResize = e => {
 
 const handleChangeColor = e => {
   color = getRandomPastelColor();
-  console.log('click');
 };
 
 window.addEventListener('mousemove', _.throttle(handleMouseMove, 20));
 window.addEventListener('resize', _.throttle(handleResize, 250));
 button.addEventListener('click', handleChangeColor);
+
+async function fadeOut() {
+  var r = 0.003 + Math.random() * 0.1;
+  ctx.fillStyle = 'rgba(36,36,36,' + r + ')';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  setTimeout(fadeOut, 20);
+}
+
+fadeOut();
