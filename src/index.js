@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { branchOut } from './js/particlesFromRoot';
 
 const canvas = document.querySelector('#canvas1');
-ctx = canvas.getContext('2d');
+const ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
