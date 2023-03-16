@@ -1,6 +1,6 @@
 export { branchOut };
 
-const edge = 80;
+const edge = 100;
 const canvas = document.querySelector('#canvas1');
 const ctx = canvas.getContext('2d');
 
@@ -13,11 +13,12 @@ class Root {
     this.centerY = centerY;
     this.speedX = 0;
     this.speedY = 0;
+    this.strokeColor = color;
   }
 
   update() {
-    this.speedX += (Math.random() - 0.5) / 2;
-    this.speedY += (Math.random() - 0.5) / 2;
+    this.speedX += (Math.random() - 0.5) / 4;
+    this.speedY += (Math.random() - 0.5) / 4;
 
     this.x += this.speedX;
     this.y += this.speedY;
@@ -34,17 +35,35 @@ class Root {
       ctx.arc(this.x, this.y, radius, 0, 2 * Math.PI);
       ctx.fillStyle = this.color;
       ctx.fill();
-      ctx.strokeStyle = 'gold';
+      ctx.strokeStyle = this.strokeColor;
       ctx.stroke();
     }
   }
+}
+
+function getRandomDarkColor() {
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += Math.floor(Math.random() * 8);
+  }
+  return color;
+}
+
+function getRandomPastelColor() {
+  let color = 'rgba(';
+  for (let i = 0; i < 3; i++) {
+    color += `${Math.floor(255 - Math.random() * 150)},`;
+  }
+  color += '1)';
+  console.log(color);
+  return color;
 }
 
 function branchOut(x, y) {
   const centerX = x;
   const centerY = y;
   for (let i = 0; i < 3; i++) {
-    const root = new Root(x, y, 'red', centerX, centerY);
+    const root = new Root(x, y, getRandomPastelColor(), centerX, centerY);
     root.update();
   }
 }

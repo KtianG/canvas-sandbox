@@ -16,10 +16,9 @@ const handleMouseMove = e => {
   mouse.x = e.x;
   mouse.y = e.y;
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'rgba(36, 36, 36,0.03)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
   branchOut(mouse.x, mouse.y);
-
-  console.log(`x: ${mouse.x}, y: ${mouse.y}`);
 };
 
 const handleResize = e => {
@@ -27,5 +26,5 @@ const handleResize = e => {
   canvas.height = window.innerHeight;
 };
 
-window.addEventListener('mousemove', _.throttle(handleMouseMove, 30));
+window.addEventListener('mousemove', _.throttle(handleMouseMove, 20));
 window.addEventListener('resize', _.throttle(handleResize, 250));
