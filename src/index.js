@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { branchOut } from './js/particlesFromRoot';
 
 const canvas = document.querySelector('#canvas1');
-const ctx = canvas.getContext('2d');
+ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -27,5 +27,5 @@ const handleResize = e => {
   canvas.height = window.innerHeight;
 };
 
-window.addEventListener('mousemove', _.throttle(handleMouseMove, 250));
+window.addEventListener('mousemove', _.throttle(handleMouseMove, 30));
 window.addEventListener('resize', _.throttle(handleResize, 250));
