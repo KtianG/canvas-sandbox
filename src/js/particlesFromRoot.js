@@ -1,6 +1,8 @@
 export { branchOut };
 
 const edge = 80;
+const canvas = document.querySelector('#canvas1');
+const ctx = canvas.getContext('2d');
 
 class Root {
   constructor(x, y, color, centerX, centerY) {
