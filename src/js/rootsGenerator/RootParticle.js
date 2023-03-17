@@ -1,6 +1,6 @@
 export { RootParticle };
 
-import { canvas, ctx } from '../utility/constants';
+import { ctx } from '../utility/constants';
 
 const edge = 100;
 

@@ -4,7 +4,12 @@ import { branchOut } from './branchOut';
 import { fadeOut } from '../utility/fadeOut';
 import { getRandomColor } from '../utility/randomColors';
 import { changeColor } from '../utility/changeColor';
-import { canvas, controls_module, mouse } from '../utility/constants';
+import {
+  canvas,
+  controls_global,
+  controls_module,
+  mouse,
+} from '../utility/constants';
 
 let color = getRandomColor();
 
@@ -14,18 +19,25 @@ function mouseMoveRootsGenerator() {
   const button = document.querySelector('#change-color');
 
   button.addEventListener('click', handleChangeColor);
-  canvas.addEventListener('mousemove', _.throttle(handleMouseMove, 20));
-  const fade_interval = setInterval(fadeOut, 20);
+  canvas.addEventListener('mousemove', handleMouseMove);
+  controls_global.addEventListener('click', handleStop);
 }
 
-const handleMouseMove = e => {
+const handleMouseMove = _.throttle(e => {
   mouse.x = e.x;
   mouse.y = e.y;
 
   color = changeColor(color);
   branchOut(mouse.x, mouse.y, color, canvas);
-};
+}, 20);
 
 const handleChangeColor = e => {
   color = getRandomColor();
+};
+
+const handleStop = e => {
+  if (e.target.id === 'stop') {
+    canvas.removeEventListener('mousemove', handleMouseMove);
+    document.querySelector('#mouseMoveRootsGenerator').dataset.on = 'false';
+  }
 };

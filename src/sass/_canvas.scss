@@ -16,10 +16,19 @@
   right: 50px;
 }
 
+.controls-global {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
 .controls__button {
-  display: inline-block;
+  display: block;
   outline: none;
   cursor: pointer;
+  margin: 20px;
   font-weight: 500;
   border-radius: 3px;
   padding: 0 16px;
