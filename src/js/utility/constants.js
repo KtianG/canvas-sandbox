@@ -1,4 +1,12 @@
-export { canvas, ctx, controls_global, controls_module, mouse };
+export {
+  canvas,
+  ctx,
+  controls_global,
+  controls_module,
+  mouse,
+  active_self_moving,
+  toggleActiveSelfMoving,
+};
 
 const canvas = document.querySelector('#canvas1');
 const ctx = canvas.getContext('2d');
@@ -10,3 +18,9 @@ const mouse = {
   x: null,
   y: null,
 };
+
+let active_self_moving = false;
+
+function toggleActiveSelfMoving() {
+  active_self_moving = !active_self_moving;
+}

@@ -1,7 +1,6 @@
 export { mouseMoveRootsGenerator };
 import _ from 'lodash';
 import { branchOut } from './branchOut';
-import { fadeOut } from '../utility/fadeOut';
 import { getRandomColor } from '../utility/randomColors';
 import { changeColor } from '../utility/changeColor';
 import {

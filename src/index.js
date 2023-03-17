@@ -1,6 +1,12 @@
 import _ from 'lodash';
 import { mouseMoveRootsGenerator } from './js/rootsGenerator/mouseMoveRootsGenerator';
-import { canvas, controls_global } from './js/utility/constants';
+import { selfMoveRootsGenerator } from './js/rootsGenerator/selfMoveRootsGenerator';
+import {
+  canvas,
+  controls_global,
+  active_self_moving,
+  toggleActiveSelfMoving,
+} from './js/utility/constants';
 import { fadeOut } from './js/utility/fadeOut';
 
 canvas.width = window.innerWidth;
@@ -11,12 +17,20 @@ const handleResize = e => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 };
-window.addEventListener('resize', _.throttle(handleResize, 250));
 
 const handleGlobalControls = e => {
   if (e.target.id === 'mouseMoveRootsGenerator') {
     if (e.target.dataset.on != 'true') {
       mouseMoveRootsGenerator();
+      e.target.dataset.on = 'true';
+    }
+  }
+
+  if (e.target.id === 'self-moving') {
+    toggleActiveSelfMoving();
+
+    if (active_self_moving) {
+      selfMoveRootsGenerator();
       e.target.dataset.on = 'true';
     }
   }
@@ -32,4 +46,5 @@ const handleGlobalControls = e => {
   }
 };
 
+window.addEventListener('resize', _.throttle(handleResize, 250));
 controls_global.addEventListener('click', handleGlobalControls);
