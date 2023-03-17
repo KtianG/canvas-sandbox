@@ -10,13 +10,13 @@
   background: rgb(36, 36, 36);
 }
 
-.controls {
+.controls-module {
   position: absolute;
   top: 50px;
-  left: 50px;
+  right: 50px;
 }
 
-.change-color {
+.controls__button {
   display: inline-block;
   outline: none;
   cursor: pointer;

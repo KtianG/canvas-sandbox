@@ -1,10 +1,10 @@
-export { branchOut, getRandomPastelColor };
+export { RootParticle };
+
+import { canvas, ctx } from '../utility/constants';
 
 const edge = 100;
-const canvas = document.querySelector('#canvas1');
-const ctx = canvas.getContext('2d');
 
-class Root {
+class RootParticle {
   constructor(x, y, color, centerX, centerY) {
     this.x = x;
     this.y = y;
@@ -38,32 +38,5 @@ class Root {
       ctx.strokeStyle = this.strokeColor;
       ctx.stroke();
     }
-  }
-}
-
-function getRandomDarkColor() {
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += Math.floor(Math.random() * 8);
-  }
-  color += '1)';
-  return color;
-}
-
-function getRandomPastelColor() {
-  let color = 'rgba(';
-  for (let i = 0; i < 3; i++) {
-    color += `${Math.floor(255 - Math.random() * 200)},`;
-  }
-  color += '1)';
-  return color;
-}
-
-function branchOut(x, y, color) {
-  const centerX = x;
-  const centerY = y;
-  for (let i = 0; i < 3; i++) {
-    const root = new Root(x, y, color, centerX, centerY);
-    root.update();
   }
 }
