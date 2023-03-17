@@ -39,5 +39,6 @@ const handleStop = e => {
   if (e.target.id === 'stop') {
     canvas.removeEventListener('mousemove', handleMouseMove);
     document.querySelector('#mouseMoveRootsGenerator').dataset.on = 'false';
+    controls_module.innerHTML = '';
   }
 };
