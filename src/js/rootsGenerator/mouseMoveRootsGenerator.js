@@ -16,5 +16,5 @@ const handleMouseMove = _.throttle(e => {
   mouse.y = e.y;
 
   color = changeColor(color);
-  branchOut(mouse.x, mouse.y, color, canvas);
+  branchOut(mouse.x, mouse.y, color);
 }, 20);

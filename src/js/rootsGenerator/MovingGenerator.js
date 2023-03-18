@@ -48,11 +48,11 @@ class MovingGenerator {
   update() {
     this.updateSpeed();
     this.updateCoordinates();
-    branchOut(this.x, this.y, this.color);
+    branchOut(this.x, this.y, this.color, 1);
     this.color = changeColor(this.color);
 
     if (active_self_moving) {
-      const setNextUpdate = setTimeout(this.update.bind(this), 20);
+      const setNextUpdate = setTimeout(this.update.bind(this), 25);
     }
   }
 }
