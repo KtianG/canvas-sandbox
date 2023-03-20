@@ -2,7 +2,7 @@ export { RootParticle };
 
 import { ctx } from '../utility/constants';
 
-const edge = 100;
+const edge = 80;
 
 class RootParticle {
   constructor(x, y, color, centerX, centerY) {

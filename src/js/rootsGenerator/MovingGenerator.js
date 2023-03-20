@@ -9,8 +9,8 @@ class MovingGenerator {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.v_x = (Math.random() - 0.5) * 2;
-    this.v_y = (Math.random() - 0.5) * 2;
+    this.v_x = (Math.random() - 0.5) * 5;
+    this.v_y = (Math.random() - 0.5) * 5;
     this.maxVel = 5;
     this.color = getRandomColor();
   }
@@ -20,8 +20,8 @@ class MovingGenerator {
   }
 
   updateSpeed() {
-    this.v_x += (Math.random() - 0.5) / 1;
-    this.v_y += (Math.random() - 0.5) / 1;
+    this.v_x += (Math.random() - 0.5) / 2;
+    this.v_y += (Math.random() - 0.5) / 2;
 
     if (Math.abs(this.v_x) > this.maxVel) {
       this.v_x = this.v_x / 2;
@@ -31,12 +31,29 @@ class MovingGenerator {
       this.v_y = this.v_y / 2;
     }
 
-    if (this.v_x + this.x < 0 || this.v_x + this.x > canvas.width) {
-      this.v_x = -this.v_x;
+    if (this.v_x + this.x < 50) {
+      this.v_x += Math.abs(this.v_x) / 10.0;
+      if (this.v_x + this.x < 0) {
+        this.v_x = -this.v_x;
+      }
     }
-
-    if (this.v_y + this.y < 0 || this.v_y + this.y > canvas.height) {
-      this.v_y = -this.v_y;
+    if (this.v_x + this.x > canvas.width - 50) {
+      this.v_x -= Math.abs(this.v_x) / 10.0;
+      if (this.v_x + this.x > canvas.width) {
+        this.v_x = -this.v_x;
+      }
+    }
+    if (this.v_y + this.y < 50) {
+      this.v_y += Math.abs(this.v_y) / 10.0;
+      if (this.v_y + this.y < 0) {
+        this.v_y = -this.v_y;
+      }
+    }
+    if (this.v_y + this.y > canvas.height - 50) {
+      this.v_y -= Math.abs(this.v_y) / 10.0;
+      if (this.v_y + this.y > canvas.height) {
+        this.v_y = -this.v_y;
+      }
     }
   }
 
